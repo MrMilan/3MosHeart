@@ -45,8 +45,8 @@ package MOS3
   model komora
     pq pq1 annotation(Placement(visible = true, transformation(origin = {0, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     Modelica.Blocks.Interfaces.RealInput c "compliance" annotation(Placement(visible = true, transformation(origin = {-86, 86}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-80, 78}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-    Real v "v jako vobjem";
-    parameter Real v0 = 0 "initial vobjem";
+    Real v;
+    parameter Real v0 = 2;
   initial equation
     v = v0;
   equation
