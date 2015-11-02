@@ -90,22 +90,25 @@ package MOS3
   model beatingHeart
     tlak tlak1(p = 1) annotation(Placement(visible = true, transformation(origin = {-86, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     odpor odpor1 annotation(Placement(visible = true, transformation(origin = {-60, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    chlopen chlopen1 annotation(Placement(visible = true, transformation(origin = {-22, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    chlopen chlopen2 annotation(Placement(visible = true, transformation(origin = {30, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     tlak tlak2(p = 2) annotation(Placement(visible = true, transformation(origin = {80, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    odpor odpor2 annotation(Placement(visible = true, transformation(origin = {68, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    komora komora1 annotation(Placement(visible = true, transformation(origin = {16, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    Heart_Elasticity heart_Elasticity1 annotation(Placement(visible = true, transformation(origin = {-24, 48}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
-    Heart_Intervals heart_Intervals1 annotation(Placement(visible = true, transformation(origin = {-70, 50}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+    Heart_Elasticity heart_Elasticity1 annotation(Placement(visible = true, transformation(origin = {2, 72}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+    Rampa rampa1 annotation(Placement(visible = true, transformation(origin = {-82, 30}, extent = {{-16, -16}, {16, 16}}, rotation = 0)));
+    chlopen chlopen1 annotation(Placement(visible = true, transformation(origin = {-28, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    odpor odpor2 annotation(Placement(visible = true, transformation(origin = {72, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    komora komora1 annotation(Placement(visible = true, transformation(origin = {22, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Heart_Intervals heart_Intervals1 annotation(Placement(visible = true, transformation(origin = {-52, 76}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+    chlopen chlopen2 annotation(Placement(visible = true, transformation(origin = {32, -68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   equation
-    connect(heart_Elasticity1.Tsyst, heart_Intervals1.Tsyst) annotation(Line(points = {{-37, 61}, {-57, 61}, {-57, 62}}, color = {0, 0, 127}));
-    connect(komora1.c, heart_Elasticity1.Et) annotation(Line(points = {{8, 48}, {-10, 48}}, color = {0, 0, 127}));
-    connect(komora1.pq1, chlopen1.pq2) annotation(Line(points = {{16, 31}, {22, 31}, {22, 0}, {-14, 0}}));
+    connect(odpor2.pq1, chlopen2.pq2) annotation(Line(points = {{63, -46}, {59, -46}, {59, -68}, {41, -68}}));
+    connect(chlopen2.pq1, chlopen1.pq2) annotation(Line(points = {{24, -68}, {8.5, -68}, {8.5, -48}, {-19, -48}}));
+    connect(heart_Intervals1.HR, rampa1.HR) annotation(Line(points = {{-65, 77}, {-64, 77}, {-64, 30}}, color = {0, 0, 127}));
+    connect(heart_Elasticity1.T0, heart_Intervals1.T0) annotation(Line(points = {{-11, 59}, {-23, 59}, {-23, 63}, {-39, 63}}, color = {0, 0, 127}));
+    connect(heart_Elasticity1.Tsyst, heart_Intervals1.Tsyst) annotation(Line(points = {{-11, 85}, {-39, 85}, {-39, 88}}, color = {0, 0, 127}));
+    connect(komora1.pq1, chlopen1.pq2) annotation(Line(points = {{22, 9}, {22, -48}, {-19, -48}}));
+    connect(komora1.c, heart_Elasticity1.Et) annotation(Line(points = {{14, 26}, {11, 26}, {11, 72}, {16, 72}}, color = {0, 0, 127}));
+    connect(tlak2.pq1, odpor2.pq2) annotation(Line(points = {{89, 17}, {96, 17}, {96, -46}, {80, -46}}));
+    connect(odpor1.pq2, chlopen1.pq1) annotation(Line(points = {{-52, 4}, {-36, 4}, {-36, -48}}));
     connect(odpor1.pq1, tlak1.pq1) annotation(Line(points = {{-69, 4}, {-68, 4}, {-68, -6}, {-76, -6}, {-76, -6}}));
-    connect(odpor1.pq2, chlopen1.pq1) annotation(Line(points = {{-52, 4}, {-30, 4}, {-30, 0}, {-30, 0}}));
-    connect(chlopen2.pq1, chlopen1.pq2) annotation(Line(points = {{22, 2}, {-14, 2}, {-14, 0}, {-14, 0}}));
-    connect(odpor2.pq1, chlopen2.pq2) annotation(Line(points = {{59, 6}, {38, 6}, {38, 2}, {38, 2}}));
-    connect(tlak2.pq1, odpor2.pq2) annotation(Line(points = {{89, 17}, {96, 17}, {96, 6}, {76, 6}, {76, 6}}));
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end beatingHeart;
 
@@ -147,5 +150,19 @@ package MOS3
     end when annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Line(origin = {-34, -7}, points = {{0, 27}, {0, -27}, {0, -27}}), Rectangle(origin = {5, -8}, extent = {{-55, 42}, {55, -42}}), Text(origin = {-18, 8}, extent = {{-12, 6}, {74, -42}}, textString = "HeartI"), Text(origin = {77, 86}, extent = {{5, -4}, {-5, 4}}, textString = "Tsyst"), Text(origin = {71, -87}, extent = {{-5, 3}, {5, -3}}, textString = "T0"), Text(origin = {-77, 23}, extent = {{-7, 9}, {7, -9}}, textString = "HR")}));
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Rectangle(origin = {5, -4}, extent = {{-57, 48}, {57, -48}}), Text(origin = {73, 88}, extent = {{-15, -10}, {1, 0}}, textString = "Tsyst"), Text(origin = {65, -86}, extent = {{5, -4}, {-5, 4}}, textString = "T0"), Text(origin = {8, -1}, extent = {{-52, 29}, {52, -29}}, textString = "HeartI"), Text(origin = {-83, 28}, extent = {{-9, 8}, {9, -8}}, textString = "HR")}));
   end Heart_Intervals;
+
+  model Rampa
+    Modelica.Blocks.Interfaces.RealOutput HR annotation(Placement(visible = true, transformation(origin = {133, 1}, extent = {{-29, -29}, {29, 29}}, rotation = 0), iconTransformation(origin = {114, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    parameter Real slope = 4;
+  equation
+    if time >= 20 then
+      HR = 100;
+    elseif time > 10 and time < 20 then
+      HR = slope * (time - 10) + 60;
+    else
+      HR = 60;
+    end if annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Line(origin = {-11, -3}, points = {{-79, -41}, {-47, -41}, {29, 41}, {79, 41}}, thickness = 3), Text(origin = {8, -84}, extent = {{-60, 58}, {64, 16}}, textString = "Rampa")}));
+    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Text(origin = {75, 35}, extent = {{21, -13}, {-21, 13}}, textString = "HR"), Line(origin = {0.07, -24}, points = {{-92.0702, -30}, {-22.0702, -30}, {47.9298, 30}, {87.9298, 30}, {87.9298, 30}, {87.9298, 30}}, thickness = 3), Text(origin = {-5, -69}, extent = {{-61, 17}, {57, -15}}, textString = "Rampa")}));
+  end Rampa;
   annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), uses(Modelica(version = "2.2.2")));
 end MOS3;
