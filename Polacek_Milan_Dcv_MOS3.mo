@@ -94,10 +94,12 @@ package MOS3
     chlopen chlopen2 annotation(Placement(visible = true, transformation(origin = {30, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     tlak tlak2(p = 2) annotation(Placement(visible = true, transformation(origin = {80, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     odpor odpor2 annotation(Placement(visible = true, transformation(origin = {68, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    Heart_Elasticity heart_Elasticity1 annotation(Placement(visible = true, transformation(origin = {-32, 44}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
     komora komora1 annotation(Placement(visible = true, transformation(origin = {16, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Heart_Elasticity heart_Elasticity1 annotation(Placement(visible = true, transformation(origin = {-24, 48}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+    Heart_Intervals heart_Intervals1 annotation(Placement(visible = true, transformation(origin = {-70, 50}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
   equation
-    connect(komora1.c, heart_Elasticity1.Et) annotation(Line(points = {{8, 48}, {-18, 48}, {-18, 44}, {-18, 44}}, color = {0, 0, 127}));
+    connect(heart_Elasticity1.Tsyst, heart_Intervals1.Tsyst) annotation(Line(points = {{-37, 61}, {-57, 61}, {-57, 62}}, color = {0, 0, 127}));
+    connect(komora1.c, heart_Elasticity1.Et) annotation(Line(points = {{8, 48}, {-10, 48}}, color = {0, 0, 127}));
     connect(komora1.pq1, chlopen1.pq2) annotation(Line(points = {{16, 31}, {22, 31}, {22, 0}, {-14, 0}}));
     connect(odpor1.pq1, tlak1.pq1) annotation(Line(points = {{-69, 4}, {-68, 4}, {-68, -6}, {-76, -6}, {-76, -6}}));
     connect(odpor1.pq2, chlopen1.pq1) annotation(Line(points = {{-52, 4}, {-30, 4}, {-30, 0}, {-30, 0}}));
@@ -125,12 +127,12 @@ package MOS3
   end Heart_Elasticity;
 
   model Heart_Intervals
-    discrete Modelica.Blocks.Interfaces.RealOutput T0 annotation(Placement(visible = true, transformation(origin = {97, -85}, extent = {{-17, -17}, {17, 17}}, rotation = 0), iconTransformation(origin = {92, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    discrete Modelica.Blocks.Interfaces.RealOutput Tsyst annotation(Placement(visible = true, transformation(origin = {98, 88}, extent = {{-14, -14}, {14, 14}}, rotation = 0), iconTransformation(origin = {94, 88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    discrete Modelica.Blocks.Interfaces.RealInput HR annotation(Placement(visible = true, transformation(origin = {-100, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-90, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
     discrete Real TPulsePrev;
     Boolean b;
     discrete Real TPulse;
+    discrete Modelica.Blocks.Interfaces.RealOutput Tsyst annotation(Placement(visible = true, transformation(origin = {110, 88}, extent = {{-14, -14}, {14, 14}}, rotation = 0), iconTransformation(origin = {94, 88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    discrete Modelica.Blocks.Interfaces.RealOutput T0 annotation(Placement(visible = true, transformation(origin = {117, -85}, extent = {{-17, -17}, {17, 17}}, rotation = 0), iconTransformation(origin = {92, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    discrete Modelica.Blocks.Interfaces.RealInput HR annotation(Placement(visible = true, transformation(origin = {-118, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-90, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   initial equation
     TPulse = 60 / HR;
     TPulsePrev = TPulse;
