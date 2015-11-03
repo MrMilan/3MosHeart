@@ -88,7 +88,6 @@ package MOS3
   end chlopen;
 
   model beatingHeart
-    tlak tlak1(p = 1) annotation(Placement(visible = true, transformation(origin = {-86, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     odpor odpor1 annotation(Placement(visible = true, transformation(origin = {-60, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     tlak tlak2(p = 2) annotation(Placement(visible = true, transformation(origin = {80, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     Heart_Elasticity heart_Elasticity1 annotation(Placement(visible = true, transformation(origin = {2, 72}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
@@ -98,7 +97,9 @@ package MOS3
     komora komora1 annotation(Placement(visible = true, transformation(origin = {22, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     Heart_Intervals heart_Intervals1 annotation(Placement(visible = true, transformation(origin = {-52, 76}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
     chlopen chlopen2 annotation(Placement(visible = true, transformation(origin = {32, -68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    tlak tlak1(p = 1) annotation(Placement(visible = true, transformation(origin = {-88, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   equation
+    connect(odpor1.pq1, tlak1.pq1) annotation(Line(points = {{-69, 4}, {-68, 4}, {-68, -33}, {-79, -33}}));
     connect(odpor2.pq1, chlopen2.pq2) annotation(Line(points = {{63, -46}, {59, -46}, {59, -68}, {41, -68}}));
     connect(chlopen2.pq1, chlopen1.pq2) annotation(Line(points = {{24, -68}, {8.5, -68}, {8.5, -48}, {-19, -48}}));
     connect(heart_Intervals1.HR, rampa1.HR) annotation(Line(points = {{-65, 77}, {-64, 77}, {-64, 30}}, color = {0, 0, 127}));
@@ -108,7 +109,6 @@ package MOS3
     connect(komora1.c, heart_Elasticity1.Et) annotation(Line(points = {{14, 26}, {11, 26}, {11, 72}, {16, 72}}, color = {0, 0, 127}));
     connect(tlak2.pq1, odpor2.pq2) annotation(Line(points = {{89, 17}, {96, 17}, {96, -46}, {80, -46}}));
     connect(odpor1.pq2, chlopen1.pq1) annotation(Line(points = {{-52, 4}, {-36, 4}, {-36, -48}}));
-    connect(odpor1.pq1, tlak1.pq1) annotation(Line(points = {{-69, 4}, {-68, 4}, {-68, -6}, {-76, -6}, {-76, -6}}));
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end beatingHeart;
 
