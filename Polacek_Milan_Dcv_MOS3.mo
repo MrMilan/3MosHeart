@@ -135,7 +135,7 @@ package MOS3
     discrete Real TPulse;
     discrete Modelica.Blocks.Interfaces.RealOutput Tsyst annotation(Placement(visible = true, transformation(origin = {110, 88}, extent = {{-14, -14}, {14, 14}}, rotation = 0), iconTransformation(origin = {94, 88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     discrete Modelica.Blocks.Interfaces.RealOutput T0 annotation(Placement(visible = true, transformation(origin = {117, -85}, extent = {{-17, -17}, {17, 17}}, rotation = 0), iconTransformation(origin = {92, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    discrete Modelica.Blocks.Interfaces.RealInput HR annotation(Placement(visible = true, transformation(origin = {-118, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-90, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Modelica.Blocks.Interfaces.RealInput HR annotation(Placement(visible = true, transformation(origin = {-118, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-90, 10}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   initial equation
     TPulse = 60 / HR;
     TPulsePrev = TPulse;
