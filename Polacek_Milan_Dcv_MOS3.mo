@@ -164,5 +164,37 @@ package MOS3
     end if annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Line(origin = {-11, -3}, points = {{-79, -41}, {-47, -41}, {29, 41}, {79, 41}}, thickness = 3), Text(origin = {8, -84}, extent = {{-60, 58}, {64, 16}}, textString = "Rampa")}));
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Text(origin = {75, 35}, extent = {{21, -13}, {-21, 13}}, textString = "HR"), Line(origin = {0.07, -24}, points = {{-92.0702, -30}, {-22.0702, -30}, {47.9298, 30}, {87.9298, 30}, {87.9298, 30}, {87.9298, 30}}, thickness = 3), Text(origin = {-5, -69}, extent = {{-61, 17}, {57, -15}}, textString = "Rampa")}));
   end Rampa;
+
+  model beatingBonus
+    komora komora1(v0 = 0) annotation(Placement(visible = true, transformation(origin = {22, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    chlopen chlopen1 annotation(Placement(visible = true, transformation(origin = {-22, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    chlopen chlopen2 annotation(Placement(visible = true, transformation(origin = {16, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    komora komora3(v0 = 100) annotation(Placement(visible = true, transformation(origin = {74, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    odpor odpor1(r = 0.001) annotation(Placement(visible = true, transformation(origin = {-56, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    odpor odpor3(r = 1.2) annotation(Placement(visible = true, transformation(origin = {2, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    odpor odpor2(r = 0.001) annotation(Placement(visible = true, transformation(origin = {36, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Modelica.Blocks.Sources.Constant const(k = 1.2) annotation(Placement(visible = true, transformation(origin = {48, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    komora komora2(v0 = 1000) annotation(Placement(visible = true, transformation(origin = {-84, -28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Heart_Elasticity heart_Elasticity1 annotation(Placement(visible = true, transformation(origin = {-6, 84}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+    Heart_Intervals heart_Intervals1 annotation(Placement(visible = true, transformation(origin = {-50, 58}, extent = {{-14, -14}, {14, 14}}, rotation = 0)));
+    Modelica.Blocks.Sources.Constant const1(k = 0.01) annotation(Placement(visible = true, transformation(origin = {-74, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+    Modelica.Blocks.Sources.Constant const2(k = 100) annotation(Placement(visible = true, transformation(origin = {-86, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  equation
+    connect(heart_Intervals1.HR, const2.y) annotation(Line(points = {{-63, 59}, {-75, 59}, {-75, 60}}, color = {0, 0, 127}));
+    connect(komora2.c, const1.y) annotation(Line(points = {{-92, -20}, {-96.25, -20}, {-96.25, -22}, {-96.5, -22}, {-96.5, -69}, {-74, -69}}, color = {0, 0, 127}));
+    connect(heart_Elasticity1.Tsyst, heart_Intervals1.Tsyst) annotation(Line(points = {{-19, 97}, {-37, 97}, {-37, 70}}, color = {0, 0, 127}));
+    connect(heart_Elasticity1.T0, heart_Intervals1.T0) annotation(Line(points = {{-19, 71}, {-30, 71}, {-30, 45}, {-37, 45}}, color = {0, 0, 127}));
+    connect(komora1.c, heart_Elasticity1.Et) annotation(Line(points = {{14, 26}, {11, 26}, {11, 84}, {8, 84}}, color = {0, 0, 127}));
+    connect(odpor3.pq1, komora2.pq1) annotation(Line(points = {{-7, -60}, {-80, -60}, {-80, -47}, {-81, -47}, {-81, -37}, {-84, -37}}));
+    connect(odpor1.pq1, komora2.pq1) annotation(Line(points = {{-65, 0}, {-74.5, 0}, {-74.5, -34}, {-62, -34}, {-62, -49.5}, {-84, -49.5}, {-84, -37}}));
+    connect(komora3.c, const.y) annotation(Line(points = {{66, 22}, {58, 22}, {58, 48}, {58, 48}}, color = {0, 0, 127}));
+    connect(odpor3.pq2, odpor2.pq2) annotation(Line(points = {{10, -60}, {74, -60}, {74, -6}, {44, -6}}));
+    connect(odpor2.pq2, komora3.pq1) annotation(Line(points = {{44, -6}, {44, -1.5}, {74, -1.5}, {74, 5}}));
+    connect(odpor2.pq1, chlopen2.pq2) annotation(Line(points = {{27, -6}, {25, -6}, {25, -18}}));
+    connect(odpor1.pq2, chlopen1.pq1) annotation(Line(points = {{-48, 0}, {-42, 0}, {-42, 4}, {-30, 4}}));
+    connect(chlopen2.pq1, chlopen1.pq2) annotation(Line(points = {{8, -18}, {8.5, -18}, {8.5, 4}, {-13, 4}}));
+    connect(komora1.pq1, chlopen1.pq2) annotation(Line(points = {{22, 9}, {22, 4}, {-13, 4}}));
+    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+  end beatingBonus;
   annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), uses(Modelica(version = "2.2.2")));
 end MOS3;
